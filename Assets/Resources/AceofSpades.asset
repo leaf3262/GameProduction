@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e651dbb3fbac04af2b8f5abf007ddc23, type: 3}
-  m_Name: DefaultNetworkPrefabs
+  m_Script: {fileID: 11500000, guid: 5fb48bd15fabea944a8fb00ab4171ad7, type: 3}
+  m_Name: AceofSpades
   m_EditorClassIdentifier: 
-  IsDefault: 1
-  List: []
+  suit: 3
+  rank: 0
+  value: 11
+  cardSprite: {fileID: 0}
+  isPowerCard: 0
+  powerEffect: 
