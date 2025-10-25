@@ -1,33 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// MonoBehaviour for a card slot in the hand UI. Holds a Card and handles clicks.
 public class CardSlot : MonoBehaviour
 {
-    public Card card;  // The card in this slot
-    public Button slotButton;  // Button to click the card
-    public GameObject cardPrefab;  // Assign CardPrefab here in Inspector (instead of Resources.Load)
+    public Card card;
+    public Button slotButton;
+    public GameObject cardPrefab;
 
     private void Start()
     {
         if (slotButton != null)
         {
-            slotButton.onClick.AddListener(OnSlotClicked);  // Listen for clicks
+            slotButton.onClick.AddListener(OnSlotClicked);
         }
     }
 
-    // Assign a card to this slot (or clear if null)
     public void SetCard(CardData data)
     {
         if (data != null)
         {
             if (card == null)
             {
-                // Instantiate the card prefab (assigned in Inspector)
                 if (cardPrefab != null)
                 {
                     GameObject cardObj = Instantiate(cardPrefab);
-                    cardObj.transform.SetParent(transform, false);  // Parent to this slot
+                    cardObj.transform.SetParent(transform, false);
                     card = cardObj.GetComponent<Card>();
                 }
                 else
@@ -41,7 +38,6 @@ public class CardSlot : MonoBehaviour
         }
         else
         {
-            // Clear the slot: Destroy the card GameObject if it exists
             if (card != null)
             {
                 Destroy(card.gameObject);
@@ -50,12 +46,11 @@ public class CardSlot : MonoBehaviour
         }
     }
 
-    // Handle click: Discard and draw new (calls CardManager)
     private void OnSlotClicked()
     {
         if (card != null && card.data != null)
         {
-            FindObjectOfType<CardManager>().DiscardAndDraw(card.data);  // Tell manager to handle
+            FindObjectOfType<CardManager>().DiscardAndDraw(card.data);
         }
     }
 }
